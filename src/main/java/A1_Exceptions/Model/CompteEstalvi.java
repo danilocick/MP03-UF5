@@ -11,6 +11,7 @@ public class CompteEstalvi {
     private final String numCompte;
     private double saldo;
     private List<Client> llista_usuaris;
+    private List<CompteEstalvi> llista_compteEstalvi;
 
     public CompteEstalvi(String numCompte) {
         this.numCompte = numCompte;
@@ -71,14 +72,24 @@ public class CompteEstalvi {
         }else saldo -= m;
     }
 
+    public void transferTo(String emisor,String receptor, double transfer, List<CompteEstalvi> llista_compteEstalvi) throws BankAccountException{
+        /*
+        if emisor equalsto getNumCompte(){
+            treure(transfer)
+                loop 'till end
+            if receptor equalsto getNumCompte();
+                ingressar(transfer)
+                break;
+           }
+         */
+    }
+
     public String getNumCompte() {
         return numCompte;
     }
-
     public double getSaldo() {
         return saldo;
     }
-
     public List<Client> getLlista_usuaris() {
         return llista_usuaris;
     }

@@ -15,7 +15,9 @@ public class Main {
             compteEstalvi.addUser(aa);
             compteEstalvi.addUser(bb);
             compteEstalvi.removeUser(dni);
+
             compteEstalvi.ingressar(10);
+            System.out.println();
             compteEstalvi.treure(11);
 
         }catch (ClientAccountException | BankAccountException e){
