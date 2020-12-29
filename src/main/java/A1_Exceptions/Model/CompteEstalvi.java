@@ -11,7 +11,6 @@ public class CompteEstalvi extends Exception {
     private final String numCompte;
     private double saldo;
     private List<Client> llista_usuaris;
-    private List<CompteEstalvi> llista_compteEstalvi;
 
     public CompteEstalvi(String numCompte) {
         this.numCompte = numCompte;
