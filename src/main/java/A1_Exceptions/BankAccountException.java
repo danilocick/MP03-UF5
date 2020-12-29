@@ -7,6 +7,4 @@ public class BankAccountException extends Exception {
         super(msg);
     }
 
-    public void printStackTrace(double saldo) {
-    }
 }

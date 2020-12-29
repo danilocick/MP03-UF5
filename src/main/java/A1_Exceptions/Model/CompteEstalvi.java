@@ -74,9 +74,14 @@ public class CompteEstalvi extends Exception {
 
     public void transferTo(CompteEstalvi emisor,CompteEstalvi receptor, double transfer) throws BankAccountException{
         try{
+            if (emisor.getSaldo() > transfer){
+                receptor.ingressar(transfer);
+            }
             emisor.treure(transfer);
-            receptor.ingressar(transfer);
-        }catch (BankAccountException e){e.printStackTrace();}
+
+        }catch (BankAccountException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getNumCompte() {
