@@ -30,7 +30,7 @@ public class Main {
 
         try{
             ce1.ingressar(123);
-            compteEstalvi.transferTo(ce1,ce2,50);
+            compteEstalvi.transferTo(ce1,ce2,180);
         }catch ( BankAccountException e){
             e.printStackTrace();
 

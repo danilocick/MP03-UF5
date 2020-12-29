@@ -76,7 +76,7 @@ public class CompteEstalvi extends Exception {
         try{
             emisor.treure(transfer);
             receptor.ingressar(transfer);
-        }catch (BankAccountException e){e.printStackTrace(emisor.saldo);}
+        }catch (BankAccountException e){e.printStackTrace();}
     }
 
     public String getNumCompte() {
