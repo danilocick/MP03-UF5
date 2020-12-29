@@ -7,7 +7,7 @@ import A1_Exceptions.Exceptions.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompteEstalvi {
+public class CompteEstalvi extends Exception {
     private final String numCompte;
     private double saldo;
     private List<Client> llista_usuaris;
@@ -72,16 +72,11 @@ public class CompteEstalvi {
         }else saldo -= m;
     }
 
-    public void transferTo(String emisor,String receptor, double transfer, List<CompteEstalvi> llista_compteEstalvi) throws BankAccountException{
-        /*
-        if emisor equalsto getNumCompte(){
-            treure(transfer)
-                loop 'till end
-            if receptor equalsto getNumCompte();
-                ingressar(transfer)
-                break;
-           }
-         */
+    public void transferTo(CompteEstalvi emisor,CompteEstalvi receptor, double transfer) throws BankAccountException{
+        try{
+            emisor.treure(transfer);
+            receptor.ingressar(transfer);
+        }catch (BankAccountException e){e.printStackTrace(emisor.saldo);}
     }
 
     public String getNumCompte() {

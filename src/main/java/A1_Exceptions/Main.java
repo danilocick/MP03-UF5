@@ -1,5 +1,6 @@
 package A1_Exceptions;
 
+import A1_Exceptions.Exceptions.ExceptionMessage;
 import A1_Exceptions.Model.Client;
 import A1_Exceptions.Model.CompteEstalvi;
 
@@ -18,12 +19,24 @@ public class Main {
 
             compteEstalvi.ingressar(10);
             System.out.println();
-            compteEstalvi.treure(11);
+            compteEstalvi.treure(8);
 
         }catch (ClientAccountException | BankAccountException e){
             e.printStackTrace();
         }
 
+        CompteEstalvi ce1 = new CompteEstalvi("1000000000");
+        CompteEstalvi ce2 = new CompteEstalvi("5000000000");
 
+        try{
+            ce1.ingressar(123);
+            compteEstalvi.transferTo(ce1,ce2,50);
+        }catch ( BankAccountException e){
+            e.printStackTrace();
+
+        }finally {
+            System.out.println(ce1.getNumCompte() + ": " +ce1.getSaldo());
+            System.out.println(ce2.getNumCompte() + ": " +ce2.getSaldo());
+        }
     }
 }
