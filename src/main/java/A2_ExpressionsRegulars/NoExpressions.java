@@ -11,6 +11,9 @@ public class NoExpressions {
         String pareNoel = "*<]:-DOo";
         String rens = ">:o)";
         String follets = "<]:-D";
+        String folletsparenoel = "<]:-DOo";
+        String substring;
+
 
         int comptePareNoel = 0, compteRens = 0, compteFollets = 0;
         boolean bPareNoel = false, bRens = false, bFollets = false;
@@ -20,20 +23,41 @@ public class NoExpressions {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
+                String mm = data;
 
+                while (data.indexOf(pareNoel)>-1){
 
-                if (data.contains(pareNoel)) {
-                    comptePareNoel++;
-                    bPareNoel=true;
+                    if (data.contains(pareNoel)) {
+                        bPareNoel = true;
+                        comptePareNoel++;
+                        substring = data.substring(data.indexOf(pareNoel) + pareNoel.length());
+                        data = substring;
+                    }
                 }
-                if (data.contains(rens)) {
-                    compteRens++;
-                    bRens=true;
+
+                data = mm;
+                while (data.indexOf(rens)>-1){
+
+                    if (data.contains(rens)) {
+                        bRens = true;
+                        compteRens++;
+                        substring = data.substring(data.indexOf(rens) + rens.length());
+                        data = substring;
+                    }
                 }
-                if (data.contains(follets)) {
-                    compteFollets++;
-                    bFollets=true;
+
+                data = mm;
+                while (data.indexOf(follets)>-1){
+                    if (data.contains(follets)) {
+                        if (!data.contains(folletsparenoel)) {
+                            bFollets = true;
+                            compteFollets++;
+                        }
+                        substring = data.substring(data.indexOf(follets) + follets.length());
+                        data = substring;
+                    }
                 }
+
 
                 if (bPareNoel){System.out.print("Pare Noel ("+ comptePareNoel+") ");}
                 if (bRens){System.out.print("Rens ("+ compteRens+") ");}
