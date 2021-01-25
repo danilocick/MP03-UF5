@@ -13,10 +13,7 @@ import java.util.List;
 @Data
 public class Entitats {
 
-    @XmlElement(name = "entitats")
+    @XmlElement(name = "entitat")
     private List<Entitat> llistaEntitats;
 
-    public List<Entitat> getLlistaEntitats() {
-        return llistaEntitats;
-    }
 }
