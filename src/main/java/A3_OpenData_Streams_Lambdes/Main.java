@@ -1,50 +1,47 @@
 package A3_OpenData_Streams_Lambdes;
 
-import A3_OpenData_Streams_Lambdes.Model.Title;
+import A3_OpenData_Streams_Lambdes.Model.Entitat;
+import A3_OpenData_Streams_Lambdes.Model.Entitats;
+import A3_OpenData_Streams_Lambdes.Model.GuiaEntitats;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
-    static final String pathCSV = "https://datasets.imdbws.com/name.basics.tsv.gz";
+    static final String pathXML = "http://justicia.gencat.cat/web/.content/tramits/entitats/llistatEntitats-entitats_religioses.xml";
 
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-
-        readCSV();
-
+        readXML();
     }
 
-    private static void readCSV() {
-        System.out.println("reading CSV");
+    private static void readXML() {
         URL url = null;
-        BufferedReader in = null;
-        CSVReader reader = null;
         try {
-            url = new URL(pathCSV);
-            in = new BufferedReader(new InputStreamReader(url.openStream()));
-            reader = new CSVReader(in);
-        } catch (IOException e) {
+            url = new URL(pathXML);
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        CsvToBean<Title> TitleaCsvToBean = new CsvToBeanBuilder(reader)
-                .withType(Title.class)
-                .withIgnoreLeadingWhiteSpace(true)
-                .build();
 
-        Iterator<Title> csvIterator = TitleaCsvToBean.iterator();
-        while(csvIterator.hasNext()) {
-            Title title = csvIterator.next();
-            System.out.println(title);
-            System.out.println("hola");
+
+        try {
+            JAXBContext contextObj = JAXBContext.newInstance(GuiaEntitats.class);
+            Unmarshaller unmarshallerObj = contextObj.createUnmarshaller();
+            GuiaEntitats guiaEntitats = (GuiaEntitats) unmarshallerObj.unmarshal(url);
+            guiaEntitats.getEntitats().getLlistaEntitats().forEach(System.out::println);
+        } catch (JAXBException e) {
+            e.printStackTrace();
         }
-
     }
 }
