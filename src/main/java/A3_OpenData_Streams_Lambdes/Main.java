@@ -1,10 +1,8 @@
 package A3_OpenData_Streams_Lambdes;
 
 import A3_OpenData_Streams_Lambdes.Model.Entitat;
-import A3_OpenData_Streams_Lambdes.Model.Entitats;
 import A3_OpenData_Streams_Lambdes.Model.GuiaEntitats;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
