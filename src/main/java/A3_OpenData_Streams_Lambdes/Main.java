@@ -31,7 +31,7 @@ public class Main {
         int election;
 
         do {
-            MenuA3.showMenu();
+            menu.showMenu();
 
             election= sc.nextInt();
             switch (election){
@@ -99,19 +99,20 @@ public class Main {
                     TimeUnit.SECONDS.sleep(2);
 
                     //list of postalcode
-                    List<String> postalCode =guiaEntitats.getEntitats().getLlistaEntitats()
+                    List<String> email =guiaEntitats.getEntitats().getLlistaEntitats()
                             .stream()
-                            .map(Entitat::getCodiPostal)
+                            .map(Entitat::getAdrecaElectronica)
                                     .collect(Collectors.toList());
 
                     //list of names
-                    List<String> names =guiaEntitats.getEntitats().getLlistaEntitats()
+                    List<String> names = guiaEntitats.getEntitats().getLlistaEntitats()
                             .stream()
-                            .map(Entitat::getCodiPostal)
+                            .map(Entitat::getNom)
                             .collect(Collectors.toList());
 
-                    System.out.println(postalCode);
-                    System.out.println(names.);
+                    //for each name, get name and email from XML
+                    for (int i = 0;i<names.size();i++){ System.out.println(names.get(i)+ ": " +email.get(i)  );}
+                    System.out.println();
 
                     break;
                 case 7:
