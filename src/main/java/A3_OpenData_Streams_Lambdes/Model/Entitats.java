@@ -18,5 +18,6 @@ public class Entitats {
 
     public List<Entitat> getLlistaEntitats() {
         return llistaEntitats;
+
     }
 }
